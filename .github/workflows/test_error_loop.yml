@@ -38,7 +38,7 @@ jobs:
          account=account${i}
          passwd=passwd${i}
          appname=appname${i}
-         cf l -a https://api.${!region}.cf.cloud.ibm.com login -u ${!account} -p ${!passwd}
-         cf rs ${!appname}
+         cf l -a https://api.${!region}.cf.cloud.ibm.com login -u ${!account} -p ${!passwd};
+         cf rs ${!appname};
          sleep 10
          done
