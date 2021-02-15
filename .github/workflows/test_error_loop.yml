@@ -35,7 +35,7 @@ jobs:
          sudo mv cf /usr/local/bin
          start=1
          end=3
-         for i in {$start..$end};do
+         for i in {"${start}".."${end}"};do
          region=region${i}
          account=account${i}
          passwd=passwd${i}
