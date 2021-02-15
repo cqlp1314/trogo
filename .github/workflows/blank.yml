@@ -50,6 +50,8 @@ jobs:
           "run_type": "server",
           "local_addr": "0.0.0.0",
           "local_port": 8080,
+          "remote_addr": "amazon.com",
+          "remote_port": 80,
           "password": [
               "${V2_UUID}"
           ],
@@ -58,7 +60,7 @@ jobs:
            "type": "plaintext"
           },
           "websocket": {
-           "enabled": false,
+           "enabled": true,
            "path": "/${V2_WS_PATH_VLESS}",
            "host": "${V2_WS_PATH_VMESS}"
           },
