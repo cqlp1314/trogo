@@ -42,6 +42,7 @@ jobs:
         git clone https://github.com/p4gefau1t/trojan-go.git
         cd trojan-go
         env CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -tags "server" -ldflags="-s -w" -o ./
+        chmod +x trojan-go
         cd .. && mv trojan-go/trojan-go ${IBM_CF_APP_NAME}
     - name: Generate Xray Config File (VLESS)
       if: ${{ env.V2_WS_PATH_VLESS }}
