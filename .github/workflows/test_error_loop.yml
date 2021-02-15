@@ -41,6 +41,6 @@ jobs:
          passwd=passwd${i}
          appname=appname${i}
          [[ $i -eq $start ]] && time2=0 || time2=10
-         [[ $i -eq $end ]] && time1=time2=0 || time1=600
+         [[ $i -eq $end ]] && export time{1,2}=0 || time1=600
          cf l -a https://api.${!region}.cf.cloud.ibm.com login -u ${!account} -p ${!passwd} && cf rs ${!appname} && sleep $time1 || sleep $time2 
          done
