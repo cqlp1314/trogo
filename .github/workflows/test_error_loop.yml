@@ -1,0 +1,44 @@
+name: IBM Cloud Auto Restart
+  
+on:
+  push:
+    branches: [ main ]
+
+  watch:
+    types: started
+  workflow_dispatch:
+
+env:
+  region1: ${{ secrets.region1 }}
+  account1: ${{ secrets.account1 }}
+  passwd1: ${{ secrets.passwd1 }}
+  appname1: ${{ secrets.appname1 }} 
+  region2: ${{ secrets.region2 }}
+  account2: ${{ secrets.account2 }}
+  passwd2: ${{ secrets.passwd2 }}
+  appname2: ${{ secrets.appname2 }}
+  region3: ${{ secrets.region3 }}
+  account3: ${{ secrets.account3 }}
+  passwd3: ${{ secrets.passwd3 }}
+  appname3: ${{ secrets.appname3 }}     
+jobs:
+  ibm-cloud-restart:
+    runs-on: ubuntu-latest
+    if: github.event.repository.owner.id == github.event.sender.id
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install CF CLI
+      run: |
+         curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github&version=v6" | tar -zx
+         sudo mv cf /usr/local/bin
+         for i in {1..3};do
+         region=region${i}
+         account=account${i}
+         passwd=passwd${i}
+         appname=appname${i}
+         cf l -a https://api.${!region}.cf.cloud.ibm.com login -u ${!account} -p ${!passwd}
+         cf rs ${!appname}
+         sleep 10
+         done
