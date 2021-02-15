@@ -59,7 +59,7 @@ jobs:
           },
           "websocket": {
            "enabled": false,
-           "path": "${V2_WS_PATH_VLESS}",
+           "path": "/${V2_WS_PATH_VLESS}",
            "host": "${V2_WS_PATH_VMESS}"
           },
           "router": {
