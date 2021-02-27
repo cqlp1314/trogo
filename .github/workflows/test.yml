@@ -34,7 +34,7 @@ jobs:
           for i in {1..3};do
           echo $i
           echo {{ $secrets[test$i] }}
-          echo {{ $secrets["test1"] }}
+          # echo 1
           echo ----
           echo ${{ secrets["test1"] }}
           done
