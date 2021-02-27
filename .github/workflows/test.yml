@@ -38,4 +38,5 @@ jobs:
           echo {{ $secrets.test1 }}
           echo ----
           echo ${{ secrets.test1 }}
+          echo {{ secrets.test1 }}
           done
