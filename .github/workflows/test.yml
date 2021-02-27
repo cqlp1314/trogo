@@ -35,6 +35,7 @@ jobs:
           echo $i
           echo {{ $secrets[test$i] }}
           # echo 1
+          echo {{ $secrets.test1 }}
           echo ----
-          echo ${{ secrets["test1"] }}
+          echo ${{ secrets.test1 }}
           done
